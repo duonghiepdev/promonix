@@ -1,0 +1,18 @@
+api_version = "2026-07"
+
+[[extensions]]
+name = "t:name"
+handle = "promonix-discount"
+type = "function"
+uid = "e7efd619-ab12-d65d-f591-6a824fd50ca1658a5e87"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate.run"
+  input_query = "src/cart_lines_discounts_generate_run.graphql"
+  export = "cart_lines_discounts_generate_run"
+
+  [extensions.build]
+  command = "cargo build --locked --target=wasm32-unknown-unknown --release"
+  path = "target/wasm32-unknown-unknown/release/promonix-discount.wasm"
+  watch = [ "src/**/*.rs" ]

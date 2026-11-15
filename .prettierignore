@@ -1,0 +1,7 @@
+node_modules
+.shopify
+archive
+build
+target
+pnpm-lock.yaml
+schema.graphql

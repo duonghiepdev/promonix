@@ -1,0 +1,35 @@
+{
+  "name": "promonix-discount-app",
+  "private": true,
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "dev": "shopify app dev --config promonix-discount-dev",
+    "build": "pnpm --filter @promonix/admin build",
+    "typecheck": "pnpm --filter @promonix/admin typecheck",
+    "test": "pnpm --filter @promonix/admin test",
+    "db:generate": "pnpm --filter @promonix/admin exec prisma generate",
+    "db:migrate": "pnpm --filter @promonix/admin exec prisma migrate deploy",
+    "function:build": "shopify app function build --path extensions/promonix-discount",
+    "function:test": "pnpm --filter promonix-discount test",
+    "deploy": "shopify app deploy --config promonix-discount-dev",
+    "format": "prettier --write .",
+    "env:sync": "node scripts/sync-env.mjs",
+    "predev": "pnpm env:sync",
+    "setup": "pnpm env:sync && pnpm db:generate && pnpm db:migrate",
+    "test:browser": "playwright test",
+    "check": "pnpm typecheck && pnpm test && pnpm build && pnpm function:test",
+    "function:unit": "cargo test --manifest-path extensions/promonix-discount/Cargo.toml"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "prettier": "^3.6.2"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "pnpm": {
+    "overrides": {
+      "qs": "^6.16.0"
+    }
+  }
+}

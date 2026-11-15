@@ -1,0 +1,17 @@
+query Input {
+  cart {
+    lines {
+      id
+      quantity
+      cost {
+        subtotalAmount {
+          amount
+        }
+      }
+    }
+  }
+  discount {
+    discountClasses
+    metafield(namespace: "$app:promonix", key: "discount-config") { value }
+  }
+}

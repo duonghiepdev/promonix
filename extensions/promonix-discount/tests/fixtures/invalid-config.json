@@ -1,0 +1,30 @@
+{
+  "payload": {
+    "export": "cart_lines_discounts_generate_run",
+    "target": "cart.lines.discounts.generate.run",
+    "input": {
+      "cart": {
+        "lines": [
+          {
+            "id": "gid://shopify/CartLine/0",
+            "quantity": 3,
+            "cost": {
+              "subtotalAmount": {
+                "amount": "100.0"
+              }
+            }
+          }
+        ]
+      },
+      "discount": {
+        "discountClasses": ["PRODUCT"],
+        "metafield": {
+          "value": "{\"percentage\":101,\"minimumQuantity\":3}"
+        }
+      }
+    },
+    "output": {
+      "operations": []
+    }
+  }
+}
